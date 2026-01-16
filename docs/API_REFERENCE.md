@@ -97,13 +97,15 @@ Generates text using the traditional API.
 ```php
 public static function generateTextResult(
     string|MessagePart|MessagePart[]|Message|Message[] $prompt,
-    ModelInterface|ModelConfig|null $model = null
+    ModelInterface|ModelConfig|null $modelOrConfig = null,
+    ?ProviderRegistry $registry = null
 ): GenerativeAiResult
 ```
 
 **Parameters:**
 - `$prompt` - The prompt input
-- `$model` - Optional model instance or configuration
+- `$modelOrConfig` - Optional model instance, model configuration, or null for auto-discovery
+- `$registry` - Optional custom registry (defaults to the default registry)
 
 **Returns:** `GenerativeAiResult` with text generation result
 
@@ -114,13 +116,15 @@ Streams text generation results as they're produced.
 ```php
 public static function streamGenerateTextResult(
     string|MessagePart|MessagePart[]|Message|Message[] $prompt,
-    ModelInterface|ModelConfig|null $model = null
+    ModelInterface|ModelConfig|null $modelOrConfig = null,
+    ?ProviderRegistry $registry = null
 ): Generator<GenerativeAiResult>
 ```
 
 **Parameters:**
 - `$prompt` - The prompt input
-- `$model` - Optional model instance or configuration
+- `$modelOrConfig` - Optional model instance, model configuration, or null for auto-discovery
+- `$registry` - Optional custom registry (defaults to the default registry)
 
 **Returns:** Generator yielding `GenerativeAiResult` chunks
 
@@ -131,13 +135,15 @@ Generates an image using the traditional API.
 ```php
 public static function generateImageResult(
     string|MessagePart|MessagePart[]|Message|Message[] $prompt,
-    ModelInterface|ModelConfig|null $model = null
+    ModelInterface|ModelConfig|null $modelOrConfig = null,
+    ?ProviderRegistry $registry = null
 ): GenerativeAiResult
 ```
 
 **Parameters:**
 - `$prompt` - The prompt input
-- `$model` - Optional model instance or configuration
+- `$modelOrConfig` - Optional model instance, model configuration, or null for auto-discovery
+- `$registry` - Optional custom registry (defaults to the default registry)
 
 **Returns:** `GenerativeAiResult` with image generation result
 

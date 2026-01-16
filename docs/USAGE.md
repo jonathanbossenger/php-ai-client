@@ -253,14 +253,19 @@ $text = AiClient::prompt('What is in this image?')
     ->withFile('/path/to/image.jpg', 'image/jpeg')
     ->generateText();
 
-// From base64 data
+// From base64 data (data URI format)
 $text = AiClient::prompt('Describe this image.')
-    ->withInlineImage($base64Data, 'image/png')
+    ->withFile('data:image/png;base64,' . $base64Data)
+    ->generateText();
+
+// Or use plain base64 data
+$text = AiClient::prompt('Describe this image.')
+    ->withFile($base64Data, 'image/png')
     ->generateText();
 
 // From URL
 $text = AiClient::prompt('What do you see?')
-    ->withFileUrl('https://example.com/image.jpg', 'image/jpeg')
+    ->withFile('https://example.com/image.jpg', 'image/jpeg')
     ->generateText();
 ```
 

@@ -157,26 +157,34 @@ public function withText(string $text): self
 
 #### `withFile()`
 
-Adds a file from path.
+Adds a file from various sources. Accepts:
+- File object
+- Local file path string
+- URL string (remote file)
+- Base64-encoded data string
+- Data URI string (data:mime/type;base64,data)
 
 ```php
 public function withFile($file, ?string $mimeType = null): self
 ```
 
-#### `withFileUrl()`
+**Parameters:**
+- `$file` - File object or string (path, URL, base64, or data URI)
+- `$mimeType` - Optional MIME type (required for base64 data, optional for others)
 
-Adds a file from URL.
-
+**Examples:**
 ```php
-public function withFileUrl(string $url, ?string $mimeType = null): self
-```
+// From file path
+->withFile('/path/to/image.jpg', 'image/jpeg')
 
-#### `withInlineImage()`
+// From URL
+->withFile('https://example.com/image.jpg')
 
-Adds an inline base64-encoded image.
+// From base64 data
+->withFile($base64Data, 'image/png')
 
-```php
-public function withInlineImage(string $base64Data, string $mimeType): self
+// From data URI
+->withFile('data:image/png;base64,iVBORw0K...')
 ```
 
 #### `withFunctionResponse()`
